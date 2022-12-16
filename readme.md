@@ -4,7 +4,7 @@
 <br />
 
 ![alt_text](assets/images/risks.png)
-# Introduction
+# Introdução
 
 CI/CD environments, processes, and systems are the beating heart of any modern software organization. They deliver code from an engineer’s workstation to production. Combined with the rise of the DevOps discipline and microservice architectures, CI/CD systems and processes have reshaped the engineering ecosystem:
 
@@ -25,61 +25,61 @@ Adversaries of all levels of sophistication are shifting their attention to CI/C
 
 While attackers have adapted their techniques to the new realities of CI/CD, most defenders are still early on in their efforts to find the right ways to detect, understand, and manage the risks associated with these environments. Seeking the right balance between optimal security and engineering velocity, security teams are in search for the most effective security controls that will allow engineering to remain agile without compromising on security.
 
+# Top 10 risks
+Todos os riscos seguem uma estrutura consistente:
 
-#  The "Top 10 CI/CD Security Risks" initiative
+* **Definição** - Definição concisa da natureza do risco.
+* **Descrição** - Explicação detalhada do contexto e motivação do adversário.
+* **Impacto** - Detalhe sobre o impacto potencial que a realização do risco pode ter em uma organização.
+* **Recomendações** - Conjunto de medidas e controles recomendados para otimizar a postura de CI/CD de uma organização em relação ao risco em questão.
+* **Referências** - Uma lista de exemplos e precedentes do mundo real em que o risco em questão foi explorado.
 
-This document helps defenders identify focus areas for securing their CI/CD ecosystem. It is the result of extensive research into attack vectors associated with CI/CD, and the analysis of high profile breaches and security flaws.
+A lista foi compilada com base em extensa pesquisa e análise com base nas seguintes fontes:
 
-Numerous industry experts across multiple verticals and disciplines came together to collaborate on this document to ensure its relevance to today’s threat landscape, risk surface, and the challenges that defenders face in dealing with these risks.
+* Análise da postura de arquitetura, design e segurança de centenas de ambientes de CI/CD em vários setores e setores.
+* Discussões profundas com especialistas do setor.
+* Publicações detalhando incidentes e falhas de segurança dentro do domínio de segurança CI/CD. Exemplos são fornecidos quando relevantes.
 
-We would like to thank and acknowledge all experts which took part in reviewing and validating this document.
 
-# List of the top 10 CI/CD security risks:
+# Lista dos Top 10 Riscos de Segurança em CI/CD:
 
 [CICD-SEC-1](https://github.com/erickrazr/www-project-top-10-ci-cd-security-risks/blob/main/CICD-SEC-01-Mecanismos-de-Controle-de-Fluxo-Insuficiente-PT-BR.md): Mecanismos de Controle de Fluxo Insuficientes
 
-[CICD-SEC-2](CICD-SEC-02-Inadequate-Identity-And-Access-Management): Gerenciamento de Identidade e Acessos inadequado
+[CICD-SEC-2](https://github.com/erickrazr/www-project-top-10-ci-cd-security-risks/blob/main/CICD-SEC-02-Gerenciamento-de-Identidade-e-Acessos-inadequado-PT-BR.md): Gerenciamento de Identidade e Acessos inadequado
 
-[CICD-SEC-3](CICD-SEC-03-Dependency-Chain-Abuse): Abuso de cadeia de dependência
+[CICD-SEC-3](https://github.com/erickrazr/www-project-top-10-ci-cd-security-risks/blob/main/CICD-SEC-03-Abuso-de-cadeia-de-dependencia-PT-BR.md): Abuso de cadeia de dependência
 
-[CICD-SEC-4](CICD-SEC-04-Poisoned-Pipeline-Execution): Execução de Pipeline Envenendada - *Poisoned Pipeline Execution (PPE)*
+[CICD-SEC-4](https://github.com/erickrazr/www-project-top-10-ci-cd-security-risks/blob/main/CICD-SEC-04-Poisoned-Pipeline-Execution-PT-BR.md): Execução de Pipeline Envenendada - *Poisoned Pipeline Execution (PPE)*
 
-[CICD-SEC-5](CICD-SEC-05-Insufficient-PBAC): Controle de Acesso Insuficiente em Pipelines - *Insufficient PBAC (Pipeline-Based Access Controls)*
+[CICD-SEC-5]https://github.com/erickrazr/www-project-top-10-ci-cd-security-risks/blob/main/CICD-SEC-05-PBAC-Insuficiente-PT-BR.md): Controle de Acesso Insuficiente em Pipelines - *Insufficient PBAC (Pipeline-Based Access Controls)*
 
-[CICD-SEC-6](CICD-SEC-06-Insufficient-Credential-Hygiene): Insufficient Credential Hygiene
+[CICD-SEC-6](https://github.com/erickrazr/www-project-top-10-ci-cd-security-risks/blob/main/CICD-SEC-06-Insufficient-Credential-Hygiene-PT-BR.md): Insufficient Credential Hygiene
 
-[CICD-SEC-7](CICD-SEC-07-Insecure-System-Configuration): Configurações Inseguras de Sistemas
+[CICD-SEC-7](https://github.com/erickrazr/www-project-top-10-ci-cd-security-risks/blob/main/CICD-SEC-07-Configuracoes-Inseguras-de-Sistemas-PT-BR.md): Configurações Inseguras de Sistemas
 
-[CICD-SEC-8](CICD-SEC-08-Ungoverned-Usage-of-3rd-Party-Services): Uso não controlado de serviços de terceiros
+[CICD-SEC-8](https://github.com/erickrazr/www-project-top-10-ci-cd-security-risks/blob/main/CICD-SEC-08-Uso-nao-controlado-de-servicos-de-terceiros-PT-BR.md): Uso não controlado de serviços de terceiros
 
-[CICD-SEC-9](CICD-SEC-09-Improper-Artifact-Integrity-Validation): Validação de integridade de artefatos impróprias
+[CICD-SEC-9](https://github.com/erickrazr/www-project-top-10-ci-cd-security-risks/blob/main/CICD-SEC-09-Validacao-de-integridade-de-artefatos-improprias-PT-BR.md): Validação de integridade de artefatos impróprias
 
-[CICD-SEC-10](CICD-SEC-10-Insufficient-Logging-And-Visibility):Visibilidade e Logs Insuficientes
-
-
-# Top 10 risks
-Presented below are the top 10 CI/CD security risks. All risks follow a consistent structure - 
-
-* **Definition** - Concise definition of the nature of the risk.
-* **Description** - Detailed explanation of the context and the adversary motivation.
-* **Impact** - Detail around the potential impact the realization of the risk can have on an organization.
-* **Recommendations** - A set of measures and controls recommended for optimizing an organization’s CI/CD posture in relation to the risk in question.
-* **References** - A list of real world examples and precedents in which the risk in question was exploited.
-
-The list was compiled on the basis of extensive research and analysis based on the following sources:
-
-* Analysis of the architecture, design and security posture of hundreds of CI/CD environments across multiple verticals and industries.
-* Profound discussions with industry experts.
-* Publications detailing incidents and security flaws within the CI/CD security domain. Examples are provided where relevant.
+[CICD-SEC-10](https://github.com/erickrazr/www-project-top-10-ci-cd-security-risks/blob/main/CICD-SEC-10-Visibilidade-e-Logs-Insuficientes-PT-BR.md):Visibilidade e Logs Insuficientes
 
 
-## Authors
+#  A Iniciativa "Top 10 CI/CD Security Risks" 
+
+Este documento ajuda os defensores a identificar áreas de foco para proteger seu ecossistema de CI/CD. É o resultado de uma extensa pesquisa sobre vetores de ataque associados a CI/CD e da análise de violações de alto perfil e falhas de segurança.
+
+Inúmeros especialistas da área em vários setores e disciplinas se reuniram para colaborar neste documento para garantir sua relevância para o cenário atual de ameaças, superfície de risco e os desafios que os defensores enfrentam ao lidar com esses riscos.
+
+Gostaríamos de agradecer e reconhecer todos os especialistas que participaram da revisão e validação deste documento..
+
+
+## Autores
 
 * [Daniel Krivelevich](https://twitter.com/Dkrivelev) (CTO @ Cider Security)
 * [Omer Gil](https://twitter.com/omer_gil) (Director of Research @ Cider Security)
 
 
-## Reviewers
+## Revisores
 
 * [Iftach Ian Amit](https://twitter.com/iiamit) (Advisory CSO @ Rapid7)
 * [Jonathan Claudius](https://twitter.com/claudijd) (CISO @ Jump Crypto)
