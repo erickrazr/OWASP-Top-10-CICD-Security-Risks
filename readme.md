@@ -51,7 +51,7 @@ A lista foi compilada com base em extensa pesquisa e análise com base nas segui
 
 [CICD-SEC-4](https://github.com/erickrazr/www-project-top-10-ci-cd-security-risks/blob/main/CICD-SEC-04-Poisoned-Pipeline-Execution-PT-BR.md): Execução de Pipeline Envenendada - *Poisoned Pipeline Execution (PPE)*
 
-[CICD-SEC-5]https://github.com/erickrazr/www-project-top-10-ci-cd-security-risks/blob/main/CICD-SEC-05-PBAC-Insuficiente-PT-BR.md): Controle de Acesso Insuficiente em Pipelines - *Insufficient PBAC (Pipeline-Based Access Controls)*
+[CICD-SEC-5](https://github.com/erickrazr/www-project-top-10-ci-cd-security-risks/blob/main/CICD-SEC-05-PBAC-Insuficiente-PT-BR.md): Controle de Acesso Insuficiente em Pipelines - *Insufficient PBAC (Pipeline-Based Access Controls)*
 
 [CICD-SEC-6](https://github.com/erickrazr/www-project-top-10-ci-cd-security-risks/blob/main/CICD-SEC-06-Insufficient-Credential-Hygiene-PT-BR.md): Insufficient Credential Hygiene
 
