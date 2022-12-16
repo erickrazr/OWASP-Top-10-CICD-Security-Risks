@@ -1,7 +1,3 @@
----
-
-layout: col-sidebar
-title: "CICD-SEC-5: PBAC (Pipeline-Based Access Controls) Insuficiente"
 
 ---
 ## Definição

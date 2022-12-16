@@ -1,7 +1,3 @@
----
-
-layout: col-sidebar
-title: "CICD-SEC-8: Uso não controlado de serviços de terceiros"
 
 ---
 ## Definição

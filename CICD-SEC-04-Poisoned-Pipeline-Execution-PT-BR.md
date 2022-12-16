@@ -1,7 +1,3 @@
----
-
-layout: col-sidebar
-title: "CICD-SEC-4: Poisoned Pipeline Execution (PPE)"
 
 ---
 ## Definição

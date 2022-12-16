@@ -1,7 +1,3 @@
----
-
-layout: col-sidebar
-title: "CICD-SEC-6: Insufficient Credential Hygiene"
 
 ---
 ## Definição

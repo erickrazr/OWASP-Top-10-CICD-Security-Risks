@@ -1,7 +1,3 @@
----
-
-layout: col-sidebar
-title: "CICD-SEC-2: Gerenciamento de Identidade e Acessos inadequado"
 
 ---
 ## Definição

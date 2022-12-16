@@ -1,7 +1,3 @@
----
-
-layout: col-sidebar
-title: "CICD-SEC-10: Visibilidade e Logs Insuficientes"
 
 ---
 ## Definição

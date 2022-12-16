@@ -1,7 +1,3 @@
----
-
-layout: col-sidebar
-title: "CICD-SEC-3: Abuso de cadeia de dependência"
 
 ---
 ## Definição

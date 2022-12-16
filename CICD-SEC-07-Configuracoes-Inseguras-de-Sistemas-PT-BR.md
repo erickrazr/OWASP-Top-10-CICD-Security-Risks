@@ -1,7 +1,3 @@
----
-
-layout: col-sidebar
-title: "CICD-SEC-7: Configurações Inseguras de Sistemas"
 
 ---
 ## Definition

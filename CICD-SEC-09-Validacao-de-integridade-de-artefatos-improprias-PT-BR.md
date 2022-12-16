@@ -1,7 +1,3 @@
----
-
-layout: col-sidebar
-title: "CICD-SEC-9: Validação de integridade de artefatos impróprias"
 
 ---
 ## Definição
