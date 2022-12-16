@@ -1,5 +1,4 @@
 
----
 ## Definição
 
 A superfície de ataque CI/CD consiste nos ativos orgânicos de uma organização, como SCM ou CI, e nos serviços de terceiros que recebem acesso a esses ativos orgânicos. Os riscos relacionados ao uso não controlado de serviços de terceiros dependem da extrema facilidade com que um serviço de terceiros pode obter acesso a recursos em sistemas CI/CD, expandindo efetivamente a superfície de ataque da organização.

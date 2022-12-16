@@ -1,5 +1,4 @@
 
----
 ## Definição
 
 Logs insuficientes e riscos de visibilidade permitem que um adversário realize atividades maliciosas no ambiente de CI/CD sem ser detectado durante qualquer fase do attack kill chain, incluindo a identificação dos TTPs (Técnicas, Táticas e Procedimentos) do invasor como parte de qualquer pós-incidente investigação.

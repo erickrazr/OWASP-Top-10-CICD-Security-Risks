@@ -1,5 +1,4 @@
 
----
 ## Definição
 
 Os Hosts que executam os pipelines têm acesso a vários recursos e sistemas dentro e fora do ambiente de execução. Ao executar código malicioso em um pipeline, os adversários aproveitam os riscos insuficientes de PBAC (controles de acesso baseados em pipeline) para abusar da permissão concedida ao pipeline para se mover lateralmente dentro ou fora do sistema CI/CD.
