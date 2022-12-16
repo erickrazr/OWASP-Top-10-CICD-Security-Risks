@@ -1,5 +1,4 @@
 
----
 ## Definição
 
 Mecanismos de controle de fluxo insuficientes referem-se à capacidade de um invasor que obteve permissões de acesso a um sistema dentro do processo de CI/CD (SCM, CI, repositório de artefatos etc.) de enviar manualmente códigos maliciosos ou artefatos pelo pipeline devido à falta de mecanismos que imponham aprovação ou revisão adicional.
