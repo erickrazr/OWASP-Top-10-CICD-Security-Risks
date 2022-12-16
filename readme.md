@@ -6,24 +6,24 @@
 ![alt_text](assets/images/risks.png)
 # Introdução
 
-CI/CD environments, processes, and systems are the beating heart of any modern software organization. They deliver code from an engineer’s workstation to production. Combined with the rise of the DevOps discipline and microservice architectures, CI/CD systems and processes have reshaped the engineering ecosystem:
+Ambientes, processos e sistemas de CI/CD são o coração pulsante de qualquer organização de software moderna. Eles entregam o código da estação de trabalho de um desenvolvedor para a produção. Combinados com a ascensão da disciplina DevOps e das arquiteturas de microsserviços, os sistemas e processos de CI/CD remodelaram o ecossistema de desenvolvimento:
 
-* The technical stack is more diverse, both in relation to coding languages as well as to technologies and frameworks adopted further down the pipeline (e.g. GitOps, K8s).
-* Adoption of new languages and frameworks is increasingly quicker, without significant technical barriers.
-* There is an increased use of automation and Infrastructure as Code (IaC) practices.
-* 3rd parties, both in the shape of external providers as well as dependencies in code, have become a major part of any CI/CD ecosystem, with the integration of a new service typically requiring no more than adding 1-2 lines of code.
+* O Conjunto de tecnologias é mais diversificado, tanto em relação às linguagens de codificação quanto às tecnologias e estruturas adotadas posteriormente (por exemplo, GitOps, K8s).
+* A adoção de novas linguagens e frameworks está cada vez mais rápida, sem grandes barreiras técnicas.
+* Há um aumento no uso de práticas de automação e infraestrutura como código (IaC).
+* Terceiros, tanto na forma de provedores externos quanto de dependências no código, tornaram-se uma parte importante de qualquer ecossistema de CI/CD, com a integração de um novo serviço normalmente exigindo não mais do que adicionar 1 a 2 linhas de código.
 
-These characteristics allow faster, more flexible and diverse software delivery. However, they have also reshaped the attack surface with a multitude of new avenues and opportunities for attackers.
+Essas características permitem uma entrega de software mais rápida, flexível e diversificada. No entanto, eles também reformularam a superfície de ataque com uma infinidade de novos caminhos e oportunidades para os atacantes.
 
-Adversaries of all levels of sophistication are shifting their attention to CI/CD, realizing CI/CD services provide an efficient path to reaching an organization’s crown jewels. The industry is witnessing a significant rise in the amount, frequency and magnitude of incidents and attack vectors focusing on abusing flaws in the CI/CD ecosystem, including - 
+Adversários de todos os níveis de sofisticação estão voltando sua atenção para CI/CD, percebendo que os serviços de CI/CD fornecem um caminho eficiente para alcançar as joias da coroa de uma organização. A indústria está testemunhando um aumento significativo na quantidade, frequência e magnitude de incidentes e vetores de ataque com foco no abuso de falhas no ecossistema CI/CD, incluindo -
 
-* The compromise of the **SolarWinds** build system, used to spread malware through to 18,000 customers.
-* The **Codecov** breach, that led to exfiltration of secrets stored within environment variables in thousands of build pipelines across numerous enterprises.
-* The **PHP breach**, resulting in publication of a malicious version of PHP containing a backdoor.
-* The **Dependency Confusion** flaw, which affected dozens of giant enterprises, and abuses flaws in the way external dependencies are fetched to run malicious code on developer workstations and build environments.
-* The compromises of the **_ua-parser-js_, _coa_ and _rc_ NPM packages**, with millions of weekly downloads each, resulting in malicious code running on millions of build environments and developer workstations.
+* O comprometimento do sistema de compilação **SolarWinds**, usado para espalhar malware para 18.000 clientes.
+* A violação **Codecov**, que levou à exfiltração de segredos armazenados em variáveis de ambiente em milhares de pipelines de build em várias empresas.
+* A **violação do PHP**, resultando na publicação de uma versão maliciosa do PHP contendo um backdoor.
+* A falha **Dependency Confusion**, que afetou dezenas de empresas gigantes, e abusa de falhas na forma como dependências externas são buscadas para executar código malicioso em estações de trabalho de desenvolvedores e ambientes de build.
+* Os compromentimentos dos pacotes **_ua-parser-js_, _coa_ e _rc_ NPM**, com milhões de downloads semanais cada, resultando em código malicioso executado em milhões de ambientes de construção e estações de trabalho de desenvolvedores.
 
-While attackers have adapted their techniques to the new realities of CI/CD, most defenders are still early on in their efforts to find the right ways to detect, understand, and manage the risks associated with these environments. Seeking the right balance between optimal security and engineering velocity, security teams are in search for the most effective security controls that will allow engineering to remain agile without compromising on security.
+Embora os invasores tenham adaptado suas técnicas às novas realidades de CI/CD, a maioria dos defensores ainda está no início de seus esforços para encontrar as maneiras corretas de detectar, entender e gerenciar os riscos associados a esses ambientes. Buscando o equilíbrio certo entre segurança ideal e velocidade de desenvolvimento, as equipes de segurança estão em busca dos controles mais eficazes que permitirão que o desenvolvimento permaneça ágil sem comprometer a segurança.
 
 # Top 10 risks
 Todos os riscos seguem uma estrutura consistente:
