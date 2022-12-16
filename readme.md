@@ -38,23 +38,23 @@ We would like to thank and acknowledge all experts which took part in reviewing 
 
 [CICD-SEC-1](https://github.com/erickrazr/www-project-top-10-ci-cd-security-risks/blob/main/CICD-SEC-01-Mecanismos-de-Controle-de-Fluxo-Insuficiente-PT-BR.md): Mecanismos de Controle de Fluxo Insuficientes
 
-[CICD-SEC-2](CICD-SEC-02-Inadequate-Identity-And-Access-Management): Inadequate Identity and Access Management
+[CICD-SEC-2](CICD-SEC-02-Inadequate-Identity-And-Access-Management): Gerenciamento de Identidade e Acessos inadequado
 
-[CICD-SEC-3](CICD-SEC-03-Dependency-Chain-Abuse): Dependency Chain Abuse
+[CICD-SEC-3](CICD-SEC-03-Dependency-Chain-Abuse): Abuso de cadeia de dependência
 
-[CICD-SEC-4](CICD-SEC-04-Poisoned-Pipeline-Execution): Poisoned Pipeline Execution (PPE)
+[CICD-SEC-4](CICD-SEC-04-Poisoned-Pipeline-Execution): Execução de Pipeline Envenendada - *Poisoned Pipeline Execution (PPE)*
 
-[CICD-SEC-5](CICD-SEC-05-Insufficient-PBAC): Insufficient PBAC (Pipeline-Based Access Controls)
+[CICD-SEC-5](CICD-SEC-05-Insufficient-PBAC): Controle de Acesso Insuficiente em Pipelines - *Insufficient PBAC (Pipeline-Based Access Controls)*
 
 [CICD-SEC-6](CICD-SEC-06-Insufficient-Credential-Hygiene): Insufficient Credential Hygiene
 
-[CICD-SEC-7](CICD-SEC-07-Insecure-System-Configuration): Insecure System Configuration
+[CICD-SEC-7](CICD-SEC-07-Insecure-System-Configuration): Configurações Inseguras de Sistemas
 
-[CICD-SEC-8](CICD-SEC-08-Ungoverned-Usage-of-3rd-Party-Services): Ungoverned Usage of 3rd Party Services
+[CICD-SEC-8](CICD-SEC-08-Ungoverned-Usage-of-3rd-Party-Services): Uso não controlado de serviços de terceiros
 
-[CICD-SEC-9](CICD-SEC-09-Improper-Artifact-Integrity-Validation): Improper Artifact Integrity Validation
+[CICD-SEC-9](CICD-SEC-09-Improper-Artifact-Integrity-Validation): Validação de integridade de artefatos impróprias
 
-[CICD-SEC-10](CICD-SEC-10-Insufficient-Logging-And-Visibility): Insufficient Logging and Visibility
+[CICD-SEC-10](CICD-SEC-10-Insufficient-Logging-And-Visibility):Visibilidade e Logs Insuficientes
 
 
 # Top 10 risks
