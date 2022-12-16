@@ -61,7 +61,7 @@ A lista foi compilada com base em extensa pesquisa e análise com base nas segui
 
 [CICD-SEC-9](https://github.com/erickrazr/www-project-top-10-ci-cd-security-risks/blob/main/CICD-SEC-09-Validacao-de-integridade-de-artefatos-improprias-PT-BR.md): Validação de integridade de artefatos impróprias
 
-[CICD-SEC-10](https://github.com/erickrazr/www-project-top-10-ci-cd-security-risks/blob/main/CICD-SEC-10-Visibilidade-e-Logs-Insuficientes-PT-BR.md):Visibilidade e Logs Insuficientes
+[CICD-SEC-10](https://github.com/erickrazr/www-project-top-10-ci-cd-security-risks/blob/main/CICD-SEC-10-Visibilidade-e-Logs-Insuficientes-PT-BR.md): Visibilidade e Logs Insuficientes
 
 
 #  A Iniciativa "Top 10 CI/CD Security Risks" 
