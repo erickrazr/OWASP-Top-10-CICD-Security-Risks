@@ -5,45 +5,44 @@ A superfície de ataque CI/CD consiste nos ativos orgânicos de uma organizaçã
 
 ## Descrição
 
-It is rare to find an organization which does not have numerous 3rd parties connected to its CI/CD systems and processes. Their ease of implementation, combined with their immediate value, has made 3rd parties an integral part of the engineering day-to-day. The methods of embedding or granting access to 3rd parties are becoming more diverse and the complexities associated with implementing them are diminishing.
+É raro encontrar uma organização que não tenha vários terceiros conectados aos seus sistemas e processos de CI/CD. A sua facilidade de implementação, aliada ao seu valor imediato, tornou os terceiros parte integrante do dia-a-dia do desenvolvimento. Os métodos de incorporação ou concessão de acesso a terceiros estão se tornando mais diversificados e as complexidades associadas à sua implementação estão diminuindo.
 
-Taking a common SCM - GitHub SAAS - as en example, 3rd party applications can be connected through one or more of these 5 methods:
+Tomando um SCM comum - GitHub SAAS - como exemplo, aplicações de terceiros podem ser conectados por meio de um ou mais destes 5 métodos:
 
 
 
 * GitHub Application
 * OAuth application
-* Provisioning of an access token provided to the 3rd party application
-* Provisioning of an SSH key provided to the 3rd party application.
-* Configuring webhook events to be sent to the 3rd party.
+* Fornecimento de um token de acesso fornecido a aplicações de terceiros.
+* Fornecimento de uma chave SSH fornecida a aplicações de terceiros.
+* Configurar eventos de webhook para serem enviados para terceiros.
 
-Each method takes somewhere between seconds and minutes to implement, and grants 3rd parties with numerous capabilities, ranging from reading code in a single repository, all the way to fully administering the GitHub organization. Despite the potentially high level of permission these third parties are granted against the system, in many cases no special permissions or approvals are required by the organization prior to the actual implementation.
+Cada método leva entre segundos e minutos para ser implementado e concede a terceiros vários recursos, desde a leitura de código em um único repositório até a administração completa da organização GitHub. Apesar do nível potencialmente alto de permissão que esses terceiros recebem ao sistema, em muitos casos nenhuma permissão ou aprovação especial é exigida pela organização antes da implementação real.
 
-Build systems also allow easy integration of 3rd parties. Integrating 3rd parties into build pipelines is usually no more complex than adding 1-2 lines of code within the pipeline configuration file, or installing a plugin from the build system’s marketplace (e.g. actions in Github Actions, Orbs in CircleCI). The 3rd party functionality is then imported and executed as part of the Build process with full access to whatever resources are available from the pipeline stage it is executed in.
+Os sistemas de build também permitem fácil integração a terceiros. A integração de terceiros em pipelines de compilação geralmente não é mais complexa do que adicionar 1-2 linhas de código no arquivo de configuração do pipeline ou instalar um plug-in de mercado do sistema de build (por exemplo, ações no Github Actions, Orbs no CircleCI). A funcionalidade de terceiros é então importada e executada como parte do processo do build com acesso total a quaisquer recursos disponíveis no estágio de pipeline em que é executado.
 
-Similar methods of connectivity are available in various shapes and forms across most CI/CD systems, creating the process of governing and maintaining least privilege around 3rd party usage across the entire engineering ecosystem extremely complex. Organizations are grappling with the challenge of obtaining full visibility around which 3rd parties have access to the different systems, what methods of access they have, what level of permission/access they have been granted, and what level of permissions/access they are actually using.
-
+Métodos semelhantes de conectividade estão disponíveis em vários formatos e formas na maioria dos sistemas CI/CD, tornando extremamente complexo o processo de gerir e manter privilégios mínimos em relação ao uso de terceiros em todo o ecossistema de desenvolvimento. As organizações estão enfrentando o desafio de obter total visibilidade sobre quais terceiros têm acesso aos diferentes sistemas, quais métodos de acesso eles têm, que nível de permissão/acesso receberam e que nível de permissões/acesso estão realmente usando.
 
 ## Impacto
 
-Lack of governance and visibility around 3rd party implementations prevents organizations from maintaining RBAC within their CI/CD systems. Given how permissive 3rd parties tend to be, organizations are only as secure as the 3rd parties they implement. Insufficient implementation of RBAC and least privilege around 3rd parties, coupled with minimal governance and diligence around the process of 3rd party implementations create a significant increase of the organization’s attack surface.
+A falta de governança e visibilidade em relação às implementações de terceiros impede que as organizações mantenham o RBAC em seus sistemas de CI/CD. Dado o quão permissivos terceiros tendem a ser, as organizações são tão seguras quanto os terceiros que implementam. Implementação insuficiente de RBAC e menos privilégio em relação a terceiros, juntamente com governança e diligência mínimas em torno do processo de implementações de terceiros, criam um aumento significativo da superfície de ataque da organização.
 
-Given the highly interconnected nature of CI/CD systems and environments, compromise of a single 3rd party can be leveraged to cause damage far outside the scope of the system the 3rd party is connected to (for example, a 3rd party with write permissions on a repository, can be leveraged by an adversary to push code to the repository which will in turn trigger a build and run the adversary’s malicious code on the build system).
+Dada a natureza altamente interconectada dos sistemas e ambientes de CI/CD, o comprometimento de um único terceiro pode ser aproveitado para causar danos muito além do escopo do sistema ao qual o terceiro está conectado (por exemplo, um terceiro com permissões de escrita em um repositório, pode ser aproveitado por um adversário para enviar código para o repositório que, por sua vez, acionará uma compilação e executará o código malicioso do adversário no sistema de compilação).
 
 
 ## Recomendações
 
-Governance controls around 3rd party services should be implemented within every stage of the 3rd party usage lifecycle:
+Os controles de governança em torno dos serviços de terceiros devem ser implementados em cada estágio do ciclo de vida de uso destes:
 
 
 
-* **Approval** - Establish vetting procedures to ensure 3rd parties granted access to resources anywhere across the engineering ecosystem are approved prior to being granted access to the environment, and that the level of permission they are granted is aligned with the principle of least privilege.
-* **Integration** - Introduce controls and procedures to maintain continuous visibility over all 3rd parties integrated to CI/CD systems, including:
-    * Method of integration. Make sure all methods of integration for each system are covered (including marketplace apps, plugins, OAuth applications, programmatic access tokens, etc.).
-    * Level of permission granted to the 3rd party.
-    * Level of permission actually in use by the 3rd party.
-* **Visibility over ongoing usage** - Ensure each 3rd party is limited and scoped to the specific resources it requires access to and remove unused and/or redundant permissions. 3rd parties which are integrated as part of the Build process should run inside a scoped context with limited access to secrets and code, and with strict ingress and egress filters.
-* **Deprovisioning** - Periodically review all 3rd parties integrated and remove those no longer in use.
+* **Aprovação** - Estabeleça procedimentos de verificação para garantir que terceiros com acesso a recursos em qualquer lugar do ecossistema de engenharia sejam aprovados antes de receberem acesso ao ambiente e que o nível de permissão concedido esteja alinhado com o princípio de mínimo privilégio.
+* **Integração** - Introduzir controles e procedimentos para manter a visibilidade contínua de todos os terceiros integrados aos sistemas CI/CD, incluindo:
+     * Método de integração. Certifique-se de que todos os métodos de integração para cada sistema sejam cobertos (incluindo aplicações de mercado, plug-ins, aplicativos OAuth, tokens de acesso programático etc.).
+     * Nível de permissão concedido a terceiros.
+     * Nível de permissão atualmente em uso pelo terceiro.
+* **Visibilidade sobre o uso contínuo** - Certifique-se de que cada terceiro esteja limitado e com escopo para os recursos específicos aos quais requer acesso e remova permissões não utilizadas e/ou redundantes. Terceiros que são integrados como parte do processo de build devem ser executados dentro de um contexto com escopo com acesso limitado a segredos e código e com filtros rígidos de entrada e saída.
+* **Desprovisionamento** - Revise periodicamente todos os terceiros integrados e remova aqueles que não estão mais em uso.
 
 
 ## Referências
