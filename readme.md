@@ -53,7 +53,7 @@ A lista foi compilada com base em extensa pesquisa e análise com base nas segui
 
 [CICD-SEC-5](https://github.com/erickrazr/www-project-top-10-ci-cd-security-risks/blob/main/CICD-SEC-05-PBAC-Insuficiente-PT-BR.md): Controle de Acesso Insuficiente em Pipelines - *Insufficient PBAC (Pipeline-Based Access Controls)*
 
-[CICD-SEC-6](https://github.com/erickrazr/www-project-top-10-ci-cd-security-risks/blob/main/CICD-SEC-06-Insufficient-Credential-Hygiene-PT-BR.md): Insufficient Credential Hygiene
+[CICD-SEC-6](https://github.com/erickrazr/www-project-top-10-ci-cd-security-risks/blob/main/CICD-SEC-06-Gestao-de-Credenciais-Inadequadas-PT-BR.md): Gestão de Credenciais Inadequada
 
 [CICD-SEC-7](https://github.com/erickrazr/www-project-top-10-ci-cd-security-risks/blob/main/CICD-SEC-07-Configuracoes-Inseguras-de-Sistemas-PT-BR.md): Configurações Inseguras de Sistemas
 
