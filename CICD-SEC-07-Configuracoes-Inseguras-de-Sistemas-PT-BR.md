@@ -1,45 +1,44 @@
 
-## Definition
+## Definição
 
 
-Insecure system configuration risks stem from flaws in the security settings, configuration and hardening of the different systems across the pipeline (e.g. SCM, CI, Artifact repository), often resulting in “low hanging fruits” for attackers looking to expand their foothold in the environment.
+Os riscos de configuração insegura do sistema decorrem de falhas nas configurações de segurança dos diferentes sistemas em todo o pipeline (por exemplo, SCM, CI, repositório de artefatos), frequentemente resultando em "alvos fáceis" para invasores que desejam expandir sua superfície de ataque no ambiente.
 
 
-## Description
+## Descrição
 
-CI/CD environments are comprised of multiple systems, provided by a variety of vendors. To optimize CI/CD security, defenders are required to place strong emphasis both on the code and artifacts flowing through the pipeline, and the posture and resilience of each individual system.
+Os ambientes de CI/CD são compostos por vários sistemas, fornecidos por várias empresas. Para otimizar a segurança do CI/CD, os times de segurança devem colocar forte ênfase no código, nos artefatos que fluem pelo pipeline e na postura e resiliência de cada sistema.
 
-In a similar way to other systems storing and processing data, CI/CD systems involve various security settings and configurations on all levels - application, network and infrastructure. These settings have a major influence on the security posture of the CI/CD environments and the susceptibility to a potential compromise. Adversaries of all levels of sophistication, are always on the lookout for potential CI/CD vulnerabilities and misconfigurations that can be leveraged to their benefit.
+De maneira similar a outros sistemas que armazenam e processam dados, os sistemas CI/CD envolvem várias configurações de segurança em todos os níveis - aplicação, rede e infraestrutura. Essas configurações têm grande influência na postura de segurança dos ambientes de CI/CD e na suscetibilidade a um possível comprometimento. Adversários de todos os níveis de sofisticação estão sempre atentos a potenciais vulnerabilidades de CI/CD e configurações incorretas que podem ser aproveitadas em seu benefício.
 
-Examples of potential hardening flaws:
-
-
-
-* A self-managed system and/or component using an outdated version or lacking important security patches.
-* A system having overly permissive network access controls. 
-* A self-hosted system that has administrative permissions on the underlying OS.
-* A system with insecure system configurations. Configurations typically determine key security features having to do with authorization, access controls, logging and more. In many cases, the default set of configurations is not secure and requires optimization. 
-* A system with inadequate credential hygiene - for example default credentials which are not disabled, overly permissive programmatic tokens, and more. 
-
-While usage of Software as a Service (SaaS) CI/CD solutions, rather than their self-hosted alternative, eliminates some of the potential risks associated with system hardening and lateral movement within the network, organizations are still required to be highly diligent in securely configuring their SaaS CI/CD solution. Each solution has its own set of unique security configurations and best practices which are essential for maintaining optimal security posture.
-
-
-## Impact
-
-A security flaw in one of the CI/CD systems may be leveraged by an adversary to obtain unauthorized access to the system or worse - compromise the system and access the underlying OS. These flaws may be abused by an attacker to manipulate legitimate CI/CD flows, obtain sensitive tokens and potentially access production environments. In some scenarios, these flaws may allow an attacker to move laterally within the environment and outside the context of CI/CD systems. 
-
-
-## Recommendations
+Exemplos de possíveis falhas de harderning:
 
 
 
-* Maintain an inventory of systems and versions in use, including mapping of a designated owner for each system. Continuously check for known vulnerabilities in these components. If a security patch is available, update the vulnerable component. If not, consider removing the component / system, or reduce the potential impact of exploiting the vulnerability by restricting access to the system, or the system’s ability to perform sensitive operations.
-* Ensure network access to the systems is aligned with the principle of least access. 
-* Establish a process to periodically review all system configurations for any setting that can have an effect on the security posture of the system, and ensure all settings are optimal.
-* Ensure permissions to the pipeline execution nodes are granted according to the principle of least privilege. A common misconfiguration in this context is around granting debug permissions on execution nodes to engineers. While in many organizations this is a common practice, it is imperative to take into consideration that any user with the ability to access the execution node in debug mode may expose all secrets while they are loaded into memory and use the node’s identity - effectively granting elevated permissions to any engineer with this permission.
+* Um sistema e/ou componente usando uma versão desatualizada ou sem patches de segurança importantes.
+* Um sistema com controles de acesso à rede excessivamente permissivos.
+* Um sistema que possui permissões administrativas no sistema operacional subjacente.
+* Um sistema com configurações de sistema inseguras. As configurações geralmente determinam os principais recursos de segurança relacionados à autorização, controles de acesso, registro e muito mais. Em muitos casos, o conjunto padrão de configurações não é seguro e requer otimização.
+* Um sistema com gestão de credencial inadequada - por exemplo, credenciais padrão que não são desativadas, tokens programáticos excessivamente permissivos e muito mais.
+
+Embora o uso de soluções de CI/CD de Software como Serviço (SaaS), em vez de sua alternativa self-hosted, elimine alguns dos riscos potenciais associados ao hardening do sistema e ao movimento lateral dentro da rede, as organizações ainda precisam ser altamente diligentes na segurança, configurando sua solução SaaS CI/CD. Cada solução tem seu próprio conjunto de configurações de segurança exclusivas e práticas recomendadas essenciais para manter uma postura de segurança ideal.
 
 
-## References
+## Impacto
+
+Uma falha de segurança em um dos sistemas CI/CD pode ser aproveitada por um adversário para obter acesso não autorizado ao sistema ou pior - comprometer o sistema e acessar o sistema operacional subjacente. Essas falhas podem ser abusadas por um invasor para manipular fluxos legítimos de CI/CD, obter tokens confidenciais e potencialmente acessar ambientes de produção. Em alguns cenários, essas falhas podem permitir que um invasor se mova lateralmente dentro do ambiente e fora do contexto dos sistemas CI/CD.
+
+## Recomendações
+
+
+
+* Manter um inventário de sistemas e versões em uso, incluindo mapeamento de um proprietário designado para cada sistema. Verifique continuamente as vulnerabilidades conhecidas nesses componentes. Se um patch de segurança estiver disponível, atualize o componente vulnerável. Caso contrário, considere a remoção do componente/sistema ou reduza o impacto potencial da exploração da vulnerabilidade restringindo o acesso ao sistema ou a capacidade do sistema de executar operações confidenciais.
+* Certifique-se de que o acesso à rede aos sistemas esteja alinhado com o princípio do menor privilégio.
+* Estabeleça um processo para revisar periodicamente todas as configurações do sistema para qualquer configuração que possa afetar a postura de segurança do sistema e garantir que todas as configurações sejam ideais.
+* Certifique-se de que as permissões para os nós de execução do pipeline sejam concedidas de acordo com o princípio do menor privilégio. Um erro de configuração comum nesse contexto é conceder permissões de debug em nós de execução para desenvolvedores. Embora em muitas organizações esta seja uma prática comum, é imperativo levar em consideração que qualquer usuário com a capacidade de acessar o nó de execução no modo de debug pode expor todos os segredos enquanto eles são carregados na memória e usam a identidade do nó - efetivamente concedendo permissões administrativas para qualquer desenvolvedor com este perfil.
+
+
+## Referências
 
 
 
