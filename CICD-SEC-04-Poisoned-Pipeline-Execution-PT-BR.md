@@ -2,58 +2,54 @@
 ## Definição
 
 
-Poisoned Pipeline Execution (PPE) risks refer to the ability of an attacker with access to source control systems - and without access to the build environment, to manipulate the build process by injecting malicious code/commands into the build pipeline configuration, essentially ‘poisoning’ the pipeline and running malicious code as part of the build process.
+Os riscos de Poisoned Pipeline Execution (PPE) referem-se à capacidade de um invasor com acesso a sistemas de controle de origem - e sem acesso ao ambiente de build, manipular o processo de build injetando códigos/comandos maliciosos na configuração do pipeline, essencialmente 'envenenando-o' e executando código malicioso como parte do processo de compilação.
 
 
 ## Descrição
 
-The PPE vector abuses permissions against an SCM repository, in a way that causes a CI pipeline to execute malicious commands.
+O vetor PPE abusa das permissões contra um repositório SCM, de maneira que faz com que um pipeline de CI execute comandos maliciosos.
 
-Users that have permissions to manipulate the CI configuration files, or other files which the CI pipeline job relies on, can modify them to contain malicious commands, ultimately “poisoning” the CI pipeline executing these commands.
+Os usuários que têm permissões para manipular os arquivos de configuração do CI ou outros arquivos dos quais o trabalho do pipeline depende, podem modificá-los para conter comandos maliciosos, "envenenando" o pipeline de CI que executa esses comandos.
 
-Pipelines executing unreviewed code, for example those which are triggered directly off of pull requests or commits to arbitrary repository branches, are more susceptible to PPE. The reason is that these scenarios, by design, contain code which has not undergone any reviews or approvals. 
+Os pipelines que executam código não revisado, por exemplo, aqueles que são acionados diretamente por pull requests ou commits nos branches, são mais suscetíveis a PPE. O motivo é que esses cenários, por design, contêm código que não passou por nenhuma revisão ou aprovação.
 
-Once able to execute malicious code within the CI pipeline, the attacker can conduct a wide array of malicious operations, all within the context of the pipeline’s identity.
+Uma vez capaz de executar código malicioso dentro do pipeline de CI, o invasor pode realizar uma ampla variedade de operações maliciosas, tudo dentro do contexto da identidade do pipeline.
 
-There are three types of PPE:
+Existem três tipos de PPEs:
 
-**Direct PPE (D-PPE):** In a D-PPE scenario, the attacker modifies the CI config file in a repository they have access to, either by pushing the change directly to an unprotected remote branch on the repo, or by submitting a PR with the change from a branch or a fork. Since the CI pipeline execution is triggered off of the “push” or ”PR” events, and the pipeline execution is defined by the commands in the modified CI configuration file, the attacker’s malicious commands ultimately run in the build node once the build pipeline is triggered.
+**Direct PPE (D-PPE):** em um cenário D-PPE, o invasor modifica o arquivo de configuração do CI em um repositório ao qual ele tem acesso, seja enviando a alteração diretamente para um branch desprotegido no repositório ou enviando um PR com a alteração para um branch ou fork. Como a execução do pipeline de CI é acionada pelos eventos "push" ou "PR", e a execução é definida pelos comandos no arquivo de configuração de CI modificado, os comandos maliciosos do invasor são executados no build node  assim que o pipeline é disparado.
 
-**Indirect PPE (I-PPE):** In certain cases, the possibility of D-PPE is not available to an adversary with access to an SCM repository:
-
-
-
-* If the pipeline is configured to pull the CI configuration file from a separate, protected branch in the same repository.
-* If the CI configuration file is stored in a separate repository from the source code, without the option for a user to directly edit it.
-* If the CI build is defined in the CI system itself - instead of in a file stored in the source code.
-
-In such a scenario, the attacker can still poison the pipeline by injecting malicious code into files referenced by the pipeline configuration file, for example:
+**Indirect PPE (I-PPE):** Em certos casos, a possibilidade de D-PPE não está disponível para um adversário com acesso a um repositório SCM:
 
 
+* Se o pipeline estiver configurado para fazer pull do arquivo de configuração do CI de um branch separado e protegido no mesmo repositório.
+* Se o arquivo de configuração do CI estiver armazenado em um repositório separado do código-fonte, sem a opção de um usuário editá-lo diretamente.
+* Se a compilação do CI for definida no próprio sistema de CI - em vez de em um arquivo armazenado no código-fonte.
 
-* _make_: Executes commands defined in the “Makefile” file.
-* Scripts referenced from within the pipeline configuration file, which are stored in the same repository as the source code itself (e.g. _python myscript.py_ - where myscript.py would be manipulated by the attacker).
-* Code tests: Testing frameworks running on application code within the build process rely on dedicated files, stored in the same repository as the source code itself. Attackers that are able to manipulate the code responsible for testing are then able to run malicious commands inside the build.
-* Automatic tools: Linters and security scanners used in the CI, are also commonly reliant on a configuration file residing in the repository. Many times these configurations involve loading and running external code from a location defined inside the configuration file. 
-
-So rather than poisoning the pipeline by inserting malicious commands directly into the pipeline definition file, In I-PPE, an attacker injects malicious code into files referenced by the configuration file. The malicious code is ultimately executed on the pipeline node once the pipeline is triggered and runs the commands declared in the files in question.
-
-**Public-PPE (3PE):** Execution of a PPE attack requires access to the repository hosting the pipeline configuration file, or to files it references. In most cases, the permission to do so would be given to organization members - mainly engineers. Therefore, attackers would typically have to be in possession of an engineer's permission to the repository to execute a direct or indirect PPE attack.
-
-However, in some cases poisoning CI pipelines is available to anonymous attackers on the internet: Public repositories (for example open source projects) oftentimes allow any user to contribute - usually by creating pull requests, suggesting changes to the code. These projects are commonly automatically tested and built using a CI solution, in a similar fashion to private projects.
-
-If the CI pipeline of a public repository runs unreviewed code suggested by anonymous users, it is susceptible to a Public PPE attack, or in short - 3PE. This also exposes internal assets, such as secrets of private projects, in cases where the pipeline of the vulnerable public repository runs on the same CI instance as private ones.
+Nesse cenário, o invasor ainda pode envenenar o pipeline injetando código malicioso em arquivos referenciados pelo arquivo de configuração do pipeline, por exemplo:
 
 
+* _make_: Executa comandos definidos no arquivo “Makefile”.
+* Scripts referenciados no arquivo de configuração do pipeline, que são armazenados no mesmo repositório que o próprio código-fonte (por exemplo, _python myscript.py_ - onde myscript.py seria manipulado pelo invasor).
+* Testes de código: Os frameworks de teste executados no código do aplicativo dentro do processo de construção dependem de arquivos dedicados, armazenados no mesmo repositório que o próprio código-fonte. Os invasores que são capazes de manipular o código responsável pelo teste podem executar comandos maliciosos dentro do build.
+* Ferramentas automáticas: Linters e scanners de segurança usados no CI também são comumente dependentes de um arquivo de configuração residente no repositório. Muitas vezes essas configurações envolvem carregar e executar código externo de um local definido dentro do arquivo de configuração.
 
-**Examples**
+Portanto, em vez de envenenar o pipeline inserindo comandos maliciosos diretamente no arquivo de definição do pipeline, no I-PPE, um invasor injeta código malicioso nos arquivos referenciados pelo arquivo de configuração. O código malicioso é finalmente executado no nó do pipeline assim que o pipeline é acionado e executa os comandos declarados nos arquivos em questão.
 
-<span style="text-decoration:underline;">Example 1: Credential theft via Direct-PPE (GitHub Actions)</span>
+**Public-PPE (3PE):** A execução de um ataque PPE requer acesso ao repositório que hospeda o arquivo de configuração do pipeline ou aos arquivos aos quais ele faz referência. Na maioria dos casos, a permissão para fazê-lo seria dada aos membros da organização - principalmente desenvolvedores. Portanto, os invasores normalmente precisam ter a permissão de um desenvolvedor no repositório para executar um ataque PPE direto ou indireto.
 
-In the following example, a GitHub repository is connected with a GitHub Actions workflow that fetches the code, builds it, runs tests, and eventually deploys artifacts to AWS.
+No entanto, em alguns casos, o envenenamento de pipelines de CI está disponível para invasores anônimos na Internet: repositórios públicos (por exemplo, projetos de código aberto) muitas vezes permitem que qualquer usuário contribua - geralmente criando pull requests, sugerindo alterações no código. Esses projetos geralmente são testados e construídos automaticamente usando uma solução de CI, de maneira semelhante aos projetos privados.
 
-When new code is pushed to a remote branch in the repository, the code - including the pipeline configuration file - is fetched by the runner (the workflow node).
+Se o pipeline de CI de um repositório público executar código não revisado sugerido por usuários anônimos, ele estará suscetível a um ataque de PPE público ou, resumidamente, 3PE. Isso também expõe ativos internos, como segredos de projetos privados, nos casos em que o pipeline do repositório público vulnerável é executado na mesma instância de CI que os privados.
 
+
+**Exemplos**
+
+<span style="text-decoration:underline;">Exemplo 1: Roubo de Credencial via Direct-PPE (GitHub Actions)</span>
+
+No exemplo a seguir, um repositório GitHub está conectado a um fluxo de trabalho do GitHub Actions que busca o código, o cria, executa testes e, por fim, implanta artefatos na AWS.
+
+Quando um novo código é enviado para um branch do repositório, o código - incluindo o arquivo de configuração do pipeline - é obtido pelo executor (o nó do fluxo de trabalho).
 
 ```YAML
 name: PIPELINE
@@ -71,11 +67,11 @@ jobs:
 ![alt_text](assets/images/dppe.jpg)
 
 
-In this scenario, a D-PPE attack would be carried out as follows:
+Nesse cenário, o ataque de  D-PPE attack seria feito da seguinta forma:
 
 
 
-1. An attacker creates a new remote branch in the repository, in which they update the pipeline configuration file with malicious commands intended to access AWS credentials scoped to the GitHub organization and then to send them to a remote server.
+1. Um invasor cria um novo Branch do repositório, na qual atualiza o arquivo de configuração do pipeline com comandos maliciosos destinados a acessar as credenciais da AWS com escopo para a organização GitHub e, em seguida, enviá-las para um servidor remoto.
 
 ```YAML
 name: PIPELINE
@@ -95,21 +91,20 @@ jobs:
 
 
 
-2. Once the update is pushed, this triggers a pipeline which fetches the code from the repository, including the malicious pipeline configuration file.
-3. The pipeline runs based on the configuration file “poisoned” by the attacker. As per the attacker’s malicious commands, AWS credentials stored as repository secrets are loaded into memory.
-4. The pipeline proceeds to execute the attacker’s commands which send the AWS credentials to a server controlled by the attacker.
-5. The attacker is then able to use the stolen credentials to access the AWS production environment.
+2. Depois que a atualização é enviada, isso aciona um pipeline que busca o código do repositório, incluindo o arquivo de configuração do pipeline malicioso.
+3. O pipeline é executado com base no arquivo de configuração “envenenado” pelo invasor. De acordo com os comandos maliciosos do invasor, as credenciais da AWS armazenadas como segredos do repositório são carregadas na memória.
+4. O pipeline executa os comandos do invasor que enviam as credenciais da AWS para um servidor controlado pelo invasor.
+5. O invasor pode usar as credenciais roubadas para acessar o ambiente de produção da AWS.
 
-<span style="text-decoration:underline;">Example 2: Credential theft via Indirect-PPE (Jenkins)</span>
+<span style="text-decoration:underline;">Example 2: Roubo de credencial via Indirect-PPE (Jenkins)</span>
 
-This time, it is a Jenkins pipeline that fetches code from the repository, builds it, runs tests, and eventually deploys to AWS. In this scenario the pipeline configuration is such that the file describing the pipeline - the Jenkinsfile - is always fetched from the main branch in the repository, which is protected. Therefore, the attacker cannot manipulate the build definition, meaning that fetching secrets stored on the Jenkins credential store, or running the job on other nodes are not a possibility.
+Desta vez, é um pipeline do Jenkins que busca o código do repositório, o constrói, executa testes e, por fim, implanta na AWS. Neste cenário, a configuração do pipeline é tal que o arquivo que descreve o pipeline - o Jenkinsfile - é sempre obtido da branch principal do repositório, que é protegido. Portanto, o invasor não pode manipular a definição de build, o que significa que buscar segredos armazenados no armazenamento de credenciais do Jenkins ou executar o trabalho em outros nós não é uma possibilidade.
 
-However - this does not mean that the pipeline is risk free;
+No entanto - isso não significa que o pipeline esteja livre de riscos;
 
-In the _build_ stage of the pipeline, AWS credentials are loaded as environment variables, making them available only to the commands running in this stage. In the example below, the _make_ command, which is based on the contents of Makefile (also stored in the repository), runs as part of this stage.
+No estágio _build_ do pipeline, as credenciais da AWS são carregadas como variáveis de ambiente, tornando-as disponíveis apenas para os comandos executados neste estágio. No exemplo abaixo, o comando _make_, que é baseado no conteúdo do Makefile (também armazenado no repositório), é executado como parte deste estágio.
 
-The Jenkinsfile:
-
+O arquivo Jenkins:
 
 ```GROOVY
 pipeline {
@@ -130,7 +125,7 @@ pipeline {
 ```
 
 
-The Makefile:
+O Makefile:
 
 
 ```MAKEFILE
@@ -143,11 +138,11 @@ clean:
 
 ![alt_text](assets/images/ippe.jpg)
 
-In this scenario, an I-PPE attack would be carried out as follows:
+Nesse cenário, o ataque de I-PPE seria executado da seguinte forma:
 
 
 
-1. An attacker creates a pull request in the repository, appending malicious commands to the _Makefile_ file.
+1. O atacante cria pull requests no repositório, anexando comandos maliciosos ao arquivo _Makefile_ .
 
 
 ```MAKEFILE
@@ -161,36 +156,36 @@ clean:
 
 
 
-2. Since the pipeline is configured to be triggered upon any PR against the repo, the Jenkins pipeline is triggered, fetching the code from the repository, including the malicious _Makefile_.
-3. The pipeline runs based on the configuration file stored in the main branch. It gets to the _build_ stage, and loads the AWS credentials into environment variables - as defined in the original Jenkinsfile. Then, it runs the _make build_ command, which executes the malicious command that was added into _Makefile_.
-4. The malicious _build_ function defined in the Makefile is executed, sending the AWS credentials to a server controlled by the attacker.
-5. The attacker is then able to use the stolen credentials to access the AWS production environment.
+2. Como o pipeline está configurado para ser acionado em qualquer PR no repositório, o pipeline Jenkins é acionado, buscando o código do repositório, incluindo o _Makefile_ malicioso.
+3. O pipeline é executado com base no arquivo de configuração armazenado na branch principal. Ele chega ao estágio _build_ e carrega as credenciais da AWS nas variáveis de ambiente - conforme definido no Jenkinsfile original. Em seguida, ele executa o comando _make build_, que executa o comando malicioso que foi adicionado ao _Makefile_.
+4. A função maliciosa _build_ definida no Makefile é executada, enviando as credenciais da AWS para um servidor controlado pelo invasor.
+5. O invasor pode usar as credenciais roubadas para acessar o ambiente de produção da AWS.
 
 
 ## Impacto
 
-In a successful PPE attack, attackers execute malicious unreviewed code in the CI. This provides the attacker with the same abilities and level of access as the build job, including:
+Em um ataque de PPE bem-sucedido, os invasores executam código malicioso não revisado no CI. Isso fornece ao invasor as mesmas habilidades e nível de acesso do processo de Build, incluindo:
 
 
 
-* Access to any secret available to the CI job, such as secrets injected as environment variables or additional secrets stored in the CI. Being responsible for building code and deploying artifacts, CI/CD systems typically contain dozens of high-value credentials and tokens - such as to a cloud provider, to artifact registries, and to the SCM itself.
-* Access to external assets the job node has permissions to, such as files stored in the node’s file system, or credentials to a cloud environment accessible through the underlying host.
-* Ability to ship code and artifacts further down the pipeline, in the guise of legitimate code built by the build process. 
-* Ability to access additional hosts and assets in the network/environment of the job node.
+* Acesso a qualquer segredo disponível para o job do CI, como segredos injetados como variáveis de ambiente ou segredos adicionais armazenados no CI. Sendo responsáveis por criar código e implantar artefatos, os sistemas CI/CD geralmente contêm dezenas de credenciais e tokens de alto valor - como para um provedor de nuvem, para registros de artefatos e para o próprio SCM.
+* Acesso a ativos externos para os quais o nó de trabalho tem permissões, como arquivos armazenados no sistema de arquivos do nó ou credenciais para um ambiente de nuvem acessível por meio do host subjacente.
+* Capacidade de enviar código e artefatos mais adiante no pipeline, disfarçado de código legítimo criado pelo processo de build.
+* Capacidade de acessar hosts e ativos adicionais na rede/ambiente do nó de trabalho.
+
 
 ## Recomendações
 
-Preventing and mitigating the PPE attack vector involves multiple measures spanning across both SCM and CI systems:
+Prevenir e mitigar o vetor de ataque de PPE envolve várias medidas que abrangem os sistemas SCM e CI:
 
 
 
-* Ensure that pipelines running unreviewed code are executed on isolated nodes, not exposed to secrets and sensitive environments.
-* Evaluate the need for triggering pipelines on public repositories from external contributors. Where possible, refrain from running pipelines originating from forks, and consider adding controls such as requiring manual approval for pipeline execution. 
-* For sensitive pipelines, for example those that are exposed to secrets, ensure that each branch that is configured to trigger a pipeline in the CI system has a correlating branch protection rule in the SCM.
-* To prevent the manipulation of the CI configuration file to run malicious code in the pipeline, each CI configuration file must be reviewed before the pipeline runs. Alternatively, the CI configuration file can be managed in a remote branch, separate from the branch containing the code being built in the pipeline. The remote branch should be configured as protected.
-* Remove permissions granted on the SCM repository from users that do not need them.
-* Each pipeline should only have access to the credentials it needs to fulfill its purpose. The credentials should have the minimum required privileges.
-
+* Certifique-se de que os pipelines que executam código não revisado sejam executados em nós isolados, não expostos a segredos e ambientes confidenciais.
+* Avalie a necessidade de acionar pipelines em repositórios públicos de contribuidores externos. Sempre que possível, evite executar pipelines originados de bifurcações e considere adicionar controles, como exigir aprovação manual para execução de pipeline.
+* Para pipelines confidenciais, por exemplo, aqueles expostos a segredos, certifique-se de que cada branch configurada para acionar um pipeline no sistema CI tenha uma regra de proteção de branch correspondente no SCM.
+* Para evitar a manipulação do arquivo de configuração do CI para executar código malicioso no pipeline, cada arquivo de configuração do CI deve ser revisado antes da execução do pipeline. Como alternativa, o arquivo de configuração do CI pode ser gerenciado em uma branch remota, separada da ramificação que contém o código que está sendo criado no pipeline. A branch remota deve ser configurada como protegida.
+* Remova as permissões concedidas no repositório SCM de usuários que não precisam delas.
+* Cada pipeline deve ter acesso apenas às credenciais necessárias para cumprir sua finalidade. As credenciais devem ter os privilégios mínimos necessários.
 
 ## Referências 
 
