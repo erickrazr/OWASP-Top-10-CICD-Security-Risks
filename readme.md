@@ -1,8 +1,8 @@
 
 # Versão traduzida do Top 10 CI/CD Security Risks
 ## Idioma: PORTUGUÊS - BRASIL
-## Traduzido por: Erick Ferreira 
-#### Contato: https://www.linkedin.com/in/erickrazr/
+### Traduzido por: [Erick Ferreira](https://www.linkedin.com/in/erickrazr/)
+
 <br />
 
 ![alt_text](assets/images/risks.png)
@@ -71,35 +71,6 @@ A lista foi compilada com base em extensa pesquisa e análise com base nas segui
 Este documento ajuda os defensores a identificar áreas de foco para proteger seu ecossistema de CI/CD. É o resultado de uma extensa pesquisa sobre vetores de ataque associados a CI/CD e da análise de violações de alto perfil e falhas de segurança.
 
 Inúmeros especialistas da área em vários setores e disciplinas se reuniram para colaborar neste documento para garantir sua relevância para o cenário atual de ameaças, superfície de risco e os desafios que os defensores enfrentam ao lidar com esses riscos.
-
-Gostaríamos de agradecer e reconhecer todos os especialistas que participaram da revisão e validação deste documento..
-
-## Tradução Portugues-Brasil
-* [Erick Ferreira](https://www.linkedin.com/in/erickrazr/) (Security Specialist @ Microsoft)
-
-## Autores
-
-* [Daniel Krivelevich](https://twitter.com/Dkrivelev) (CTO @ Cider Security)
-* [Omer Gil](https://twitter.com/omer_gil) (Director of Research @ Cider Security)
-
-
-## Revisores
-
-* [Iftach Ian Amit](https://twitter.com/iiamit) (Advisory CSO @ Rapid7)
-* [Jonathan Claudius](https://twitter.com/claudijd) (CISO @ Jump Crypto)
-* [Michael Coates](https://twitter.com/_mwc) (CEO & Co-Founder @ Altitude Networks, Former CISO @ Twitter)
-* Jonathan Jaffe (CISO @ Lemonade Insurance)
-* Adrian Ludwig (Chief Trust Officer @ Atlassian)
-* [Travis McPeak](https://twitter.com/travismcpeak) (Head of Product Security @ Databricks)
-* Ron Peled (Founder & CEO @ ProtectOps, Former CISO @ LivePerson)
-* [Ty Sbano](https://twitter.com/tysbano) (CISO @ Vercel)
-* [Astha Singhal](https://twitter.com/astha_singhal) (Director of Application Security @ Netflix)
-* [Hiroki Suezawa](https://twitter.com/rung) (Security Engineer @ Mercari, inc.)
-* Tyler Welton (Principal Security Engineer @ Built Technologies, Owner @ Untamed Theory)
-* Tyler Young (Head of Security at Relativity)
-* [Ory Segal](https://twitter.com/orysegal) (Senior Director, Product Management @ Palo Alto Networks)
-* Noa Ginzbursky (DevOps Engineer @ Cider Security)
-* [Asi Greenholts](https://twitter.com/TupleType) (Security Researcher @ Cider Security)
 
 
 ## Disclaimer
