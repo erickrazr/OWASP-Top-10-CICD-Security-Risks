@@ -97,3 +97,9 @@ Gostaríamos de agradecer e reconhecer todos os especialistas que participaram d
 * Noa Ginzbursky (DevOps Engineer @ Cider Security)
 * [Asi Greenholts](https://twitter.com/TupleType) (Security Researcher @ Cider Security)
 
+
+## Disclaimer
+
+O texto original é a versão em inglês do site: https://github.com/OWASP/www-project-top-10-ci-cd-security-risks . Quaisquer discrepâncias ou diferenças criadas na tradução não são vinculativas e não têm efeito legal para fins de conformidade.
+
+A precisão do texto traduzido não é garantida. Qualquer pessoa que confie nas informações obtidas através desta tradução o faz por sua própria conta e risco. O @erickrazr se isenta e não aceitará qualquer responsabilidade por danos ou perdas de qualquer tipo causados pelo uso da documentação traduzida. Onde houver alguma dúvida, a versão em inglês é sempre a versão oficial do site: https://github.com/OWASP/www-project-top-10-ci-cd-security-risks
