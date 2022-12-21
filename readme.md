@@ -1,8 +1,8 @@
 
 # Versão traduzida do Top 10 CI/CD Security Risks
-# Idioma: PORTUGUÊS - BRASIL
+## Idioma: PORTUGUÊS - BRASIL
 ## Traduzido por: Erick Ferreira 
-## Contato: https://www.linkedin.com/in/erickrazr/
+#### Contato: https://www.linkedin.com/in/erickrazr/
 <br />
 
 ![alt_text](assets/images/risks.png)
@@ -74,6 +74,8 @@ Inúmeros especialistas da área em vários setores e disciplinas se reuniram pa
 
 Gostaríamos de agradecer e reconhecer todos os especialistas que participaram da revisão e validação deste documento..
 
+## Tradução Portugues-Brasil
+* [Erick Ferreira](https://www.linkedin.com/in/erickrazr/) (Security Specialist @ Microsoft)
 
 ## Autores
 
